@@ -1,0 +1,49 @@
+{
+    "name": "ros2-rust dev",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "type=bind,source=/dev,target=/dev",
+        "type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix",
+        // Bind .ssh folder for SSH access
+        "type=bind,source=${localEnv:HOME}/.ssh,target=/home/dev/.ssh"
+    ],
+    "remoteUser": "dev",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "bierner.github-markdown-preview",
+                "bierner.markdown-preview-github-styles",
+                "github.vscode-github-actions",
+                "pbkit.vscode-pbkit",
+                "streetsidesoftware.code-spell-checker",
+                "yzhang.markdown-all-in-one",
+                "tamasfe.even-better-toml",
+                "ritwickdey.liveserver",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "google.geminicodeassist"
+            ]
+        }
+    },
+    "runArgs": [
+        "--privileged", // Required for /dev access
+        "--network=host",
+        "--runtime=nvidia", // Use NVIDIA runtime for GPU access
+        "--gpus=all", // Use all available GPUs
+        "--name=rost"
+    ],
+    "forwardPorts": [
+        9090,
+        9876
+    ],
+    "postCreateCommand": "sudo chown -R dev:dev /workspace"
+}

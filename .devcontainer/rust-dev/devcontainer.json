@@ -41,9 +41,5 @@
         "--gpus=all", // Use all available GPUs
         "--name=rost"
     ],
-    "forwardPorts": [
-        9090,
-        9876
-    ],
     "postCreateCommand": "sudo chown -R dev:dev /workspace"
 }

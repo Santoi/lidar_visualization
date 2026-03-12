@@ -1,6 +1,6 @@
 # ROS 2 Rust Development Environment (`rclrs_demo`)
 
-This project uses a Docker-based Devcontainer to provide a fully configured ROS 2 (Humble) and Rust development environment. 
+This project uses a Docker-based devcontainer to provide a fully configured ROS 2 (Humble) and Rust development environment. 
 
 To ensure the ROS 2 message generators compile correctly without being overwritten by Docker bind mounts, please follow the exact setup sequence below.
 
@@ -44,11 +44,16 @@ rosdep install -y -r -q --from-paths src --ignore-src --rosdistro humble
 ```
 ### 4. Run instructions
 
+#### Build
 ```bash
 . /opt/ros/humble/setup.bash
 vcs import --input src/ros2_rust/ros2_rust_humble.repos src/
 colcon build --packages-up-to rclrs
 colcon build --packages-up-to geometry_msgs
-# source to ./install/setup.bash
 colcon build --packages-select rclrs_demo
+. ./install/setup.bash
+```
+#### Run
+```bash
+ros2 run rclrs_demo rclrs_demo
 ```

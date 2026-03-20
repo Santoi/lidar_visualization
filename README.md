@@ -1,4 +1,4 @@
-# ROS 2 Rust Development Environment (`rclrs_demo`)
+# ROS 2 Rust Development Environment (`lidar_visualizer`)
 
 This project uses a Docker-based devcontainer to provide a fully configured ROS 2 (Humble) and Rust development environment. 
 

@@ -5133,7 +5133,6 @@ name = "rclrs_demo"
 version = "0.1.0"
 dependencies = [
  "rclrs",
- "re_web_viewer_server",
  "rerun",
  "sensor_msgs",
 ]

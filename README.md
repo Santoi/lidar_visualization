@@ -50,10 +50,11 @@ rosdep install -y -r -q --from-paths src --ignore-src --rosdistro humble
 vcs import --input src/ros2_rust/ros2_rust_humble.repos src/
 colcon build --packages-up-to rclrs
 colcon build --packages-up-to geometry_msgs
-colcon build --packages-select rclrs_demo
+. ./install/setup.bash
+colcon build --packages-select lidar_visualizer
 . ./install/setup.bash
 ```
 #### Run
 ```bash
-ros2 run rclrs_demo rclrs_demo
+ros2 run lidar_visualizer lidar_visualizer
 ```
